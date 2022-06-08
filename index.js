@@ -1,3 +1,4 @@
+console.time("convertForms");
 const fs = require("fs");
 const path = require("path");
 
@@ -40,15 +41,19 @@ const startConversion = () => {
     let fullBlock = dom.window.document.createElement("div");
     fullBlock.appendChild(formula);
     let blockCode = fullBlock.innerHTML;
-    
 
     const replaced = html.replace(blockCode, formulaFinal);
+    const line = "-".repeat(process.stdout.columns);
 
-    console.log(blockCode.toString());
+    console.log(blockCode);
+    console.log("");
+    console.log("");
+    console.log(formulaFinal);
 
     /* fs.writeFile("./test2.html", replaced, "utf-8", function (err) {
       console.log('fez naum');
     }); */
-
   });
 };
+
+console.timeEnd("convertForms");
